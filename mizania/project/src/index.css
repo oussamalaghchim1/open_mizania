@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --primary: 200 64% 43%;
+    --secondary: 25 95% 53%;
+  }
+}
+
+@layer components {
+  .stat-card {
+    @apply bg-white rounded-lg shadow-lg p-6 transition-transform hover:scale-105;
+  }
+  
+  .nav-link {
+    @apply text-gray-600 hover:text-gray-900 px-4 py-2 rounded-md transition-colors;
+  }
+  
+  .nav-link-active {
+    @apply bg-hsl-primary/10 text-hsl-primary font-medium;
+  }
+  
+  .btn-primary {
+    @apply bg-hsl-primary text-white px-6 py-2 rounded-md hover:bg-hsl-primary/90 transition-colors;
+  }
+  
+  .btn-secondary {
+    @apply bg-hsl-secondary text-white px-6 py-2 rounded-md hover:bg-hsl-secondary/90 transition-colors;
+  }
+}
