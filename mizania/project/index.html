@@ -1,14 +1,138 @@
 <!doctype html>
-<html lang="fr">
+<html lang="fr" dir="ltr">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/morocco-coat-of-arms.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Portail de Transparence Budgétaire du Maroc</title>
+    
+    <!-- Meta Tags pour l'accessibilité & SEO -->
+    <meta name="description" content="Open Budget : Portail de Transparence Budgétaire du Maroc - Découvrez l'accès simplifié aux informations budgétaires, pour un Maroc plus transparent et solidaire. 🇲🇦">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph pour le partage sur les réseaux sociaux -->
+    <meta property="og:title" content="Open Budget - Portail de Transparence Budgétaire du Maroc">
+    <meta property="og:description" content="Accédez aux données budgétaires du Maroc et contribuez à une gestion transparente pour un avenir meilleur." />
+    <meta property="og:image" content="/morocco-coat-of-arms.png">
+    
+    <!-- Icône et Apple Touch Icon pour les appareils mobiles -->
+    <link rel="icon" type="image/svg+xml" href="/morocco-coat-of-arms.png" />
+    <link rel="apple-touch-icon" href="/morocco-coat-of-arms.png" />
+    
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <title>Open Budget - Portail de Transparence Budgétaire du Maroc</title>
+    
+    <style>
+      /* Styles par défaut */
+      body {
+        font-family: 'Inter', sans-serif;
+        background-color: #ffffff;
+        color: #000000;
+        margin: 0;
+        padding: 0;
+      }
+      
+      /* Styles du Mode Contraste Élevé */
+      body.high-contrast {
+        background-color: #000000;
+        color: #ffffff;
+        font-size: 18px; /* Améliore la lisibilité avec une taille de police plus grande */
+      }
+
+      
+      /* Conteneur pour les boutons de contraste et langue */
+      .button-container {
+        position: fixed;
+        top: 50px; /* Décalage de 50px vers le bas pour les boutons contraste et langue */
+        right: 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px; /* Espace entre les boutons */
+        z-index: 1000; /* Assure que les boutons sont toujours visibles */
+      }
+
+      /* Styles des boutons */
+      .contrast-toggle-btn, .language-select {
+        padding: 10px 20px;
+        background-color: #ffcc00; /* Jaune vif pour attirer l'attention */
+        color: black;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background-color 0.3s ease;
+      }
+
+      .contrast-toggle-btn:hover, .language-select:hover {
+        background-color: #e6b800; /* Jaune plus foncé au survol */
+      }
+
+      /* Styles du sélecteur de langue */
+      .language-select {
+        font-size: 14px;
+        padding: 8px 15px;
+        background-color: #ffffff;
+        border: 1px solid #ffcc00;
+      }
+    </style>
   </head>
   <body>
-    <div id="root"></div>
+    <!-- Contenu principal de la page -->
+    <div id="root" role="main" aria-live="polite"></div> <!-- Ajout d'aria-live pour signaler des changements dynamiques -->
+
+    <!-- Conteneur du bouton Se Connecter -->
+    <div class="login-container">
+      <button class="login-btn" onclick="login()" aria-label="Se connecter">Se connecter</button>
+    </div>
+
+    <!-- Conteneur des boutons de contraste et langue -->
+    <div class="button-container">
+      <!-- Bouton de basculement du mode contraste élevé -->
+      <button class="contrast-toggle-btn" onclick="toggleHighContrast()" aria-label="Activer le mode contraste élevé">Contraste Élevé</button>
+
+      <!-- Sélecteur de langue -->
+      <select class="language-select" onchange="changeLanguage(event)" aria-label="Sélectionner la langue">
+        <option value="fr">Français</option>
+        <option value="ar">العربية</option>
+        <option value="en">English</option>
+        <option value="tamazight">ⵜⴰⵎⴰⵣⵉⵗⵜ</option> <!-- Tamazight -->
+      </select>
+    </div>
+    
+    <!-- Scripts -->
+    <script type="module">
+      function toggleHighContrast() {
+        document.body.classList.toggle('high-contrast');
+      }
+
+      function login() {
+        alert("Connexion en cours...");
+      }
+
+      function changeLanguage(event) {
+        const lang = event.target.value;
+        const htmlElement = document.documentElement;
+        
+        // Changer la langue du document
+        htmlElement.lang = lang;
+        
+        // Changez le texte de la page en fonction de la langue sélectionnée
+        if (lang === "fr") {
+          document.title = "Open Budget - Portail de Transparence Budgétaire du Maroc";
+          // Vous pouvez changer d'autres textes sur la page ici
+        } else if (lang === "ar") {
+          document.title = "بوابة الشفافية الميزانية للمغرب";
+          // Texte en arabe ici
+        } else if (lang === "en") {
+          document.title = "Open Budget - Morocco Budget Transparency Portal";
+          // Texte en anglais ici
+        } else if (lang === "tamazight") {
+          document.title = "ⵜⴰ⎯ⵎⴰⵣⵉⵗⵜ ⴳⵓⵙⵔⵓⵏ ⵓⵎⵎⵓⵔⵏ";
+          // Texte en tamazight ici
+        }
+      }
+    </script>
+
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
