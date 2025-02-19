@@ -1,15 +1,16 @@
-import React from 'react';
-import Header from './components/Header';
-import HeroSection from './components/HeroSection';
-import StatisticsSection from './components/StatisticsSection';
-import FeaturedSection from './components/FeaturedSection';
-import StrategicInitiativesSection from './components/StrategicInitiativesSection';
-import FeedSection from './components/FeedSection';
-import NewsSection from './components/NewsSection';
+import React from "react";
+import Header from "./components/Header";
+import HeroSection from "./components/HeroSection";
+import StatisticsSection from "./components/StatisticsSection";
+import FeaturedSection from "./components/FeaturedSection";
+import StrategicInitiativesSection from "./components/StrategicInitiativesSection";
+import FeedSection from "./components/FeedSection";
+import NewsSection from "./components/NewsSection";
+import ChatbotButton from "./components/ChatbotButton";
 
 function App() {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 relative">
       <Header />
       <main>
         <HeroSection />
@@ -19,6 +20,8 @@ function App() {
         <FeedSection />
         <NewsSection />
       </main>
+      
+      {/* Footer */}
       <footer className="bg-gray-900 text-white py-12">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
@@ -60,6 +63,9 @@ function App() {
           </div>
         </div>
       </footer>
+
+      {/* Floating Chatbot Button */}
+      <ChatbotButton />
     </div>
   );
 }
